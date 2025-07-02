@@ -11,16 +11,15 @@ class Solution:
         answer = []
 
         def backtracking(cur, idx):
-            answer.append(copy.deepcopy(cur))
+            answer.append(copy.copy(cur))
             if len(cur) == len(nums):
                 return
 
             for i in range(idx, len(nums)):
                 num = nums[i]
-                if num not in cur:
-                    cur.append(num)
-                    backtracking(cur, i + 1)
-                    cur.pop()
+                cur.append(num)
+                backtracking(cur, i + 1)
+                cur.pop()
 
         backtracking([], 0)
 
